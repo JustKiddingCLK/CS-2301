@@ -1,0 +1,79 @@
+money.c
+
+function tally(f1, item)
+{
+	tally = 0
+    i = 0
+    while (reading the file from top to bottom)
+        if(i is odd)
+            ignore
+        else if(i is even and the value is equal to item)
+            add one tally
+        i = i + 1; 
+    return tally
+}
+    
+
+coffee_shop.c
+
+int main(int argc, char *argv[])
+{
+	option = 0;
+	char *in_file; stores input file name
+	char *out_file; stores output file name
+	char *out_mode; stores file writing mode
+	int item id = 0;
+	
+	if(not enough command-line arguments)
+	{
+		return 1
+	}
+
+	option = argument 1 in int form
+	if(option is 0 or greater than 3)
+    {
+        return 1;
+    }
+
+	in_file = argument 2
+
+	if(option == 1)
+    {
+        run overall_revenue();
+    }
+    else if (option == 2)
+    {
+        run balance();
+    }
+	else if (option == 3)
+    {
+        if(not enough command-line arguments)
+        {
+            return 1;
+        }
+        if(out_file == NULL)
+        {
+			return 1;
+        }
+        out_file = argument 3;
+        out_mode = argument 4;
+        item id = argument 5 in int form;
+
+        Initialize output file
+        if(out_mode = o)
+        {
+            Open file in overwrite mode
+            run tally with f1 and item id
+            print item and tally in output file
+        }
+        else if(out_mode = a)
+        {
+            Open file in append mode
+            run tally with f1 and item id
+            print item and tally in output file
+        }
+        close output file  
+    }
+    close input file
+    return 0;
+}

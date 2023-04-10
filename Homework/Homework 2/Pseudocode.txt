@@ -1,0 +1,63 @@
+money.c
+
+function overall_revenue(FILE *f1)
+{
+	revenue = 0.0
+	value;
+	i = 0
+	while (reading the file from top to bottom)
+	{
+		if(i == 0 or i == 1) - this will filter out the first row
+		{
+			ignore
+		}
+		
+        	else if(i is odd) - this will filter out the first column
+		{
+			add data
+		}
+        i = i + 1;
+	}
+	return revenue
+}
+
+function balance(FILE *f1)
+{
+	balance = 0.0
+	value;
+	i = 0;
+	while (reading the file from top to bottom)
+	{
+		if(i == 0 or even) - this will filter out the first column
+		{
+			ignore
+		}
+		
+        	else if(i is odd)
+		{
+			add data
+		}
+        i = i + 1;
+	}
+	return balance
+}
+
+
+
+coffee_shop.c
+
+int main()
+{
+	option = 0
+	char file is 50
+	
+	ask for what program and set input as variable option
+	ask for what file to be read and set input as file
+
+	f1 = open file
+	if f1 null, then error
+	if option 1, call overall_revenue function and print revenue
+	if option 2, call balance function and print balance
+
+	close file
+}

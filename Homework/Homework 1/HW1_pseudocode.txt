@@ -1,0 +1,11 @@
+Pseudocode
+
+is_prime(num) Function:
+If num is 0 or 1, return 0
+If num is divisible by any number other than 1 and num, then return 0 because it's not prime
+
+Main function:
+Prompt the user for the number of prime numbers to print
+Start with the first prime number which is 2
+Loop to print the first N prime numbers
+

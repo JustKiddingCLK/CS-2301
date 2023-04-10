@@ -1,0 +1,15 @@
+Pseudocode for Homework 1 Part 1
+
+Initialize variables
+
+Prompt user for value
+Get value from terminal and store in variable
+
+Loop over all numbers  (x) less than the specified value (v)
+    if the v/x is a whole number (hint, use the % operator which returns the remainder of a/b)
+        then the value is not prime
+        print "This value is not a prime number" to the terminal
+        Exit the loop
+
+If v/x was never a whole number
+    print "This value is a prime number" to the terminal
