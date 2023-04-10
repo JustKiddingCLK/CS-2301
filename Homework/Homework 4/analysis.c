@@ -82,8 +82,8 @@ int main(void){
 
 void get_totals(int month_data[][7], int num_items, int num_months)
 {
-    FILE* f = fopen("Total_sales.txt", "w");
-    fprintf(f, "Item Sales\n");
+    FILE* f3 = fopen("Total_sales.txt", "w");
+    fprintf(f3, "Item Sales\n");
     for (int i = 0; i < num_items; i++)
     {
         int total_sales = 0;
@@ -91,15 +91,15 @@ void get_totals(int month_data[][7], int num_items, int num_months)
         {
             total_sales += month_data[i][j];
         }
-        fprintf(f, "%02d %d\n", month_data[i][0], total_sales);
+        fprintf(f3, "%02d %d\n", month_data[i][0], total_sales);
     }
-    fclose(f);
+    fclose(f3);
 }
 
 void get_profits(int month_data[][7], int num_items, int num_months, float money[][2])
 {
-    FILE* f = fopen("Profits.txt", "w");
-    fprintf(f, "Item # Income Cost Profit\n");
+    FILE* f4 = fopen("Profits.txt", "w");
+    fprintf(f4, "Item\t#\tIncome\tCost\tProfit\n");
     for (int i = 0; i < num_items; i++) {
         int total_sales = 0;
         float total_income = 0, total_cost = 0, profit = 0;
@@ -107,10 +107,67 @@ void get_profits(int month_data[][7], int num_items, int num_months, float money
         {
             total_sales += month_data[i][j];
         }
+        for (int i = 0; i < num_items; i++)
+        {
+            int total_sales = 0;
+            for (int j = 1; j <= num_months; j++)
+            {
+                total_sales += month_data[i][j];
+            }
+            total_income = total_sales * money[i][1];
+            total_cost = total_sales * money[i][0];
+            profit = total_income - total_cost;
+            fprintf(f4, "%d\t\t%d\t\t%d\t\t%d\t\t%d\n", month_data[i][0], total_sales, total_income, total_cost, profit);
+        }
+    fclose(f4);
+    }
+}
+
+void top_earner(int month_data[][7], int num_items, int num_months, float money[][2]) {
+    FILE* f5 = fopen("Top_earners.txt", "w");
+    fprintf(f5, "Item # Income Cost Profit\n");
+    
+    // calculate profits for all items
+    float profits[num_items];
+    for (int i = 0; i < num_items; i++) {
+        int total_sales = 0;
+        float total_income = 0, total_cost = 0, profit = 0;
+        for (int j = 1; j <= num_months; j++) {
+            total_sales += month_data[i][j];
+        }
         total_income = total_sales * money[i][1];
         total_cost = total_sales * money[i][0];
         profit = total_income - total_cost;
-        fprintf(f, "%02d %.2f %.2f %.2f\n", month_data[i][0], total_income, total_cost, profit);
+        profits[i] = profit;
     }
-    fclose(f);
+    
+    // sort items by profit in descending order
+    for (int i = 0; i < num_items - 1; i++) {
+        for (int j = i + 1; j < num_items; j++) {
+            if (profits[i] < profits[j]) {
+                float temp = profits[i];
+                profits[i] = profits[j];
+                profits[j] = temp;
+                
+                int temp_id = month_data[i][0];
+                month_data[i][0] = month_data[j][0];
+                month_data[j][0] = temp_id;
+            }
+        }
+    }
+    
+    // write top 10 earners to output file
+    for (int i = 0; i < 10; i++) {
+        int item_id = month_data[i][0];
+        float total_income = 0, total_cost = 0, profit = 0;
+        int total_sales = 0;
+        for (int j = 1; j <= num_months; j++) {
+            total_sales += month_data[item_id][j];
+        }
+        total_income = total_sales * money[item_id][1];
+        total_cost = total_sales * money[item_id][0];
+        profit = total_income - total_cost;
+        fprintf(f, "%02d %.2f %.2f %.2f\n", item_id, total_income, total_cost, profit);
+    }
+    fclose(f5);
 }
