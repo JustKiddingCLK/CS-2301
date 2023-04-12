@@ -1,0 +1,2 @@
+sales: analysis.c functions.c header.h
+	gcc analysis.c functions.c -o analysis.exe
