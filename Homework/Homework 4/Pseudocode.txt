@@ -1,0 +1,43 @@
+get_totals(month_data, num_items, num_months)
+    open file "Total_sales.txt" for writing
+    write header "Item\tSales" to file
+    for(i < num items)
+        total_sales = 0
+        for (j < num_months+1)
+            total_sales += month_data[i][j]
+        fprintf
+    close file
+
+get_profits(month_data, num_items, num_months, money)
+    open file "Profits.txt" for writing
+    write header "Item\t#\tIncome\tCost\tProfit" to file
+    for (i < num_items)
+        total_income = 0
+        total_cost = money[i][1]
+        for (j < num_months+1)
+            total_income += month_data[i][j] * money[i][1]
+        profit = (total_income - total_cost) * month_data[i][1]
+        fprintf
+    close file
+
+top_earner(month_data, num_items, num_months, money)
+    open file "Top_earners.txt" for writing
+    create array profits with size of num_items
+    for (i < num_items+1)
+        total_income = 0
+         total_cost = money[i][0]
+        for (j < num_months+1)
+            total_income += month_data[i][j] * money[i][1]
+        profits[i-1] = (total_income - total_cost) * month_data[i][1]
+    write header "Item #\tProfit" to file
+    for(i < num_items):
+        max_index = i
+        for(j < num_items)
+            if profits[j] > profits[max_index]:
+                max_index = j
+        if max_index != i
+            swap profits[i] and profits[max_index]
+            swap item numbers in month_data[i+1] and month_data[max_index+1]
+        if i < 10:
+            fprintf
+    close file

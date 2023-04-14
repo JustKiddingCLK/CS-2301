@@ -11,7 +11,7 @@ void get_totals(int month_data[][7], int num_items, int num_months)
         {
             total_sales += month_data[i][j];
         }
-        fprintf(f3, "%02d\t%d\n", month_data[i][0], total_sales);
+        fprintf(f3, "%2d\t%d\n", month_data[i][0], total_sales);
     }
     fclose(f3);
 }
@@ -32,7 +32,7 @@ void get_profits(int month_data[][7], int num_items, int num_months, float money
             total_income += month_data[i][j] * money[i][1];
         }
         profit = (total_income - total_cost) * month_data[i][1];
-        fprintf(f, "%02d\t%02d\t%.2f\t%.2f\t%.2f\n", i, month_data[i+1][0], total_income, total_cost, profit);
+        fprintf(f, "%2d\t%02d\t%.2f\t%.2f\t%.2f\n", i, month_data[i+1][0], total_income, total_cost, profit);
     }
     fclose(f);
 }
@@ -64,7 +64,7 @@ void top_earner(int month_data[][7], int num_items, int num_months, float money[
             month_data[max_index+1][0] = temp_item;
         }
         if (i < 10) {
-            fprintf(f, "%02d\t%02d\t%.2f\n", i+1, month_data[i+1][0], profits[i]);
+            fprintf(f, "%2d\t%02d\t%.2f\n", i+1, month_data[i+1][0], profits[i]);
         } else {
             break;
         }
