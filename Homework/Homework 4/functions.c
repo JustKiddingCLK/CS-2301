@@ -4,7 +4,7 @@ void get_totals(int month_data[][7], int num_items, int num_months)
 {
     FILE* f3 = fopen("Total_sales.txt", "w");
     fprintf(f3, "Item\tSales\n");
-    for (int i = 0; i < num_items; i++)
+    for(int i = 0; i < num_items; i++)
     {
         int total_sales = 0;
         for (int j = 1; j <= num_months; j++)
@@ -40,14 +40,16 @@ void get_profits(int month_data[][7], int num_items, int num_months, float money
 void top_earner(int month_data[][7], int num_items, int num_months, float money[][2]) {
     FILE* f = fopen("Top_earners.txt", "w");
     float profits[num_items];
+    float total_cost;
     for (int i = 1; i <= num_items; i++) {
-        float total_income = 0, total_cost = money[i][0];
+        float total_income = 0,
+        total_cost = money[i][0];
         for (int j = 1; j <= num_months; j++) {
             total_income += month_data[i][j] * money[i][1];
         }
         profits[i-1] = (total_income - total_cost) * month_data[i][1];
     }
-    fprintf(f, "Item #\tProfit\n");
+    fprintf(f, "Item\t#\tProfit\n");
     for (int i = 0; i < num_items; i++) {
         int max_index = i;
         for (int j = i+1; j < num_items; j++) {
