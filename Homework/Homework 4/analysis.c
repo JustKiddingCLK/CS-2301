@@ -18,7 +18,7 @@ int main(void){
         money[i][0] = 0;
         money[i][1] = 0;
     }
-
+ 
     int new_item;
     float cost;
 
