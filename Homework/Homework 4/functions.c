@@ -30,13 +30,10 @@ void get_profits(int month_data[][7], int num_items, int num_months, float money
         {
             total_sales += month_data[i][j];
         }
-        if (total_sales > 0)
-        {
             total_income = total_sales * money[i][0];
             total_cost = total_sales * money[i][1];
             float profit = total_income - total_cost;
             fprintf(f, "%2d\t%d\t%6.2f\t%6.2f\t%6.2f\n", i, total_sales, total_income, total_cost, profit);
-        }
     }
     fclose(f);
 }
