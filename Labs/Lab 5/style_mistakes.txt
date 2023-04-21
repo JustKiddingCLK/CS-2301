@@ -1,0 +1,3 @@
+1. No indentations to make it easier to read. This is important because being able to read the code clearly is necessary for debugging.
+2. Brakets should be in a new line. This will help with understanding blocks inside of other blocks of code.
+3. 
