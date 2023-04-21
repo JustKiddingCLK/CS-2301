@@ -23,7 +23,8 @@ int main(void){
     float cost;
 
     //loop over all months
-    for (int i = 0; i < 6; i++){
+    for (int i = 0; i < 6; i++)
+    {
         FILE* f1;
         // open sales file
         switch (i) {
@@ -54,22 +55,22 @@ int main(void){
             month_data[new_item][i+1] = month_data[new_item][i+1] + 1;
             month_data[new_item][0] = new_item;
         }
-        fclose(f1);
-
+    fclose(f1);
     } // end loop over months
 
     // load sales data
     FILE* f2 = fopen("Costs.txt", "r");
     float purchase;
 
-    while(fscanf(f2, "%i %f %f", &new_item, &purchase, &cost) > 0){
+    while(fscanf(f2, "%i %f %f", &new_item, &purchase, &cost) > 0)
+    {
         money[new_item][0] = purchase;
         money[new_item][1] = cost;
     }
+    printf("Item: %d\n", new_item);
     fclose(f2);
     
-    get_totals(month_data, ITEMS, 7);
-    get_profits(month_data, ITEMS, 7, money);
-    top_earner(month_data, ITEMS, 7, money);
-    
+    get_totals(month_data, ITEMS, 6);
+    get_profits(month_data, ITEMS, 6, money);
+    top_earner(month_data, ITEMS, 6, money);
 }
