@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include "header.h"
 
 void get_totals(int month_data[][7], int num_items, int num_months)
 {
@@ -80,4 +82,24 @@ void top_earner(int month_data[][7], int num_items, int num_months, float money[
         fprintf(f, "%3d\t%2d\t%7.2f\n", sorted_items[i], total_sales[i], profits[sorted_items[i]]);
     }
     fclose(f);
+}
+
+float* readIncome(int numItems)
+{
+    float* costs = malloc(numItems * sizeof(float));
+    if (costs == NULL) {
+        printf("Error!");
+    }
+    FILE* f = fopen("Costs.txt", "r");
+    if (f == NULL) {
+        printf("Error!");
+    }
+    int item;
+    float purchase, cost;
+    while (fscanf(f, "%d %f %f", &item, &purchase, &cost) == 3) {
+        costs[item] = cost;
+    }
+
+    fclose(f);
+    return costs;
 }

@@ -1,15 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "header.h"
 #define ITEMS 51
 
-int main(void){
+int main(int argc, char *argv[]){
 
     // allocate arrays to store 6 months of data
     int month_data[ITEMS][7];
     float money[ITEMS][2];
 
     // initialize money and month_data to zeros
-    for (int i = 0; i < 7; i ++){
+    for (int i = 0; i < 7; i ++)
+    {
         for (int j = 0; j < ITEMS; j++){
             month_data[j][i] = 0;
         }
@@ -23,33 +25,17 @@ int main(void){
     float cost;
 
     //loop over all months
-    for (int i = 0; i < 6; i++){
+    for (int i = 0; i < argc - 1; i++)
+    {
         FILE* f1;
         // open sales file
-        switch (i) {
-            case 0:
-                f1 = fopen("Jan_data.txt", "r");
-                break;
-            case 1:
-                f1 = fopen("Feb_data.txt", "r");
-                break;
-            case 2:
-                f1 = fopen("Mar_data.txt", "r");
-                break;
-            case 3:
-                f1 = fopen("Apr_data.txt", "r");
-                break;
-            case 4:
-                f1 = fopen("May_data.txt", "r");
-                break;
-            case 5:
-                f1 = fopen("Jun_data.txt", "r");
-                break;
-        } // end switch
-
+        f1 = fopen(argv[2], "r");
+        if(f1 == NULL)
+        {
+            printf("Error");
+            return 0;
+        }
         // load sales data
-
-
         while(fscanf(f1, "%d %f", &new_item, &cost) > 0){
             month_data[new_item][i+1] = month_data[new_item][i+1] + 1;
             month_data[new_item][0] = new_item;
@@ -71,5 +57,6 @@ int main(void){
     get_totals(month_data, ITEMS, 7);
     get_profits(month_data, ITEMS, 7, money);
     top_earner(month_data, ITEMS, 7, money);
-    
+    float* costs = readIncome(ITEMS);
+    free(costs);
 }
