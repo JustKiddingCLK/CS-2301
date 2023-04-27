@@ -6,7 +6,8 @@
 int main(int argc, char *argv[]){
 
     // allocate arrays to store 6 months of data
-    int month_data[ITEMS][7];
+    int num_months = argc - 1;
+    int month_data[ITEMS][num_months+1];
     float money[ITEMS][2];
 
     // initialize money and month_data to zeros
@@ -53,10 +54,10 @@ int main(int argc, char *argv[]){
         money[new_item][1] = cost;
     }
     fclose(f2);
-    
-    get_totals(month_data, ITEMS, 7);
-    get_profits(month_data, ITEMS, 7, money);
-    top_earner(month_data, ITEMS, 7, money);
     float* costs = readIncome(ITEMS);
+    float income[ITEMS] = {0};
+    get_totals(ITEMS, num_months+1, month_data);
+    get_profits(ITEMS, num_months+1, month_data, income, &cost);
+    top_earner(ITEMS, num_months+1, month_data, income, &cost);
     free(costs);
 }

@@ -1,4 +1,5 @@
-void get_totals(int[][7], int, int);
-void get_profits(int[][7], int, int, float[][2]);
-void top_earner(int[][7], int, int, float[][2]);
+void get_totals(int rows, int cols, int array[][cols]);
+void get_profits(int rows, int cols, int array[][cols], float income[], float cost[]);
+void top_earner(int rows, int cols, int array[][cols], float income[], float cost[]);
+float* readIncome(int numItems);
 float* readIncome(int numItems);
