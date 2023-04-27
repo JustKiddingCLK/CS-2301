@@ -1,0 +1,5 @@
+matrix_calc.c: This file contains the main function. It reads in the input arguments from the command line and calls the appropriate functions from matrix_math.c to perform the matrix addition or subtraction.
+
+matrix_math.c: This file contains the implementation of the matrix math functions and the readMatrix() and deleteMatrix() functions. The readMatrix() function reads in a matrix from a file and creates a struct to store it. The deleteMatrix() function frees the memory used by a matrix struct. The addition() and subtraction() functions take two matrix structs as inputs. They perform the corresponding operation and return the resulting matrix struct.
+
+To run program, run make command. Then run the exe command with the two input files as arguments and then the type of operation. "a" is addition and "s" is subtraction.
