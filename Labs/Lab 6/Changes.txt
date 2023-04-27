@@ -1,0 +1,4 @@
+Changes:
+1. Remove first initialization of Student class_list[SIZE];
+2. Move printf statement into first for loop and remove the for loop it was in
+3. Change class_list[i].firstName = lastName; to class_list[i].firstName = firstName;
